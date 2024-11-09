@@ -1,5 +1,5 @@
 # Prep the installer
-apt update
-apt install ansible
+sudo apt update
+sudo apt install ansible
 
 ansible-playbook bootstrap.yaml
