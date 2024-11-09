@@ -1,4 +1,4 @@
-name: Runs updates for all dev machines
-hosts: cluster-controller
-roles:
- - bootstrap
+- name: Runs updates for all dev machines
+  hosts: cluster-controller
+  roles:
+    - bootstrap
