@@ -1,0 +1,10 @@
+- name: Checkout the cluster project
+  ansible.builtin.git:
+    repo: 'https://github.com/brotherlogic/cluster2.git'
+    dest: /home/simon/cluster
+
+- name: Add a cron task to bootstrap the cluster every hour
+  ansible.builtin.cron:
+    name: CLUSTER_BOOTSTRAP
+    minute: "0"
+    job: "/home/simon/cluster/bootstrap.sh"
