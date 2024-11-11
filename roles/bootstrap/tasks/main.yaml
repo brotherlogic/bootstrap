@@ -8,3 +8,24 @@
     name: CLUSTER_BOOTSTRAP
     minute: "0"
     job: "/home/simon/cluster/bootstrap.sh"
+
+- name: Install kubectl packages
+  ansible.builtin.apt:
+    pkg:
+    - apt-transport-https
+    - ca-certificates
+    - gnupg
+
+- name: Download kubectl key
+   shell: curl -fsSL {{ k8s_url_apt_key }} | gpg --dearmor -o {{ k8s_gpgpath }}
+      args:
+        creates: "{{ k8s_gpgpath }}"
+
+- name: Install Kubernetes repository
+  apt_repository:
+    filename: kubernetes
+    repo: "deb [signed-by={{ k8s_gpgpath }}] {{ k8s_repository }} /"
+
+- name: Install Kubernetes Packages
+      package: name={{ item }} state=present force=yes install_recommends=no
+      loop: "{{ k8s_packages }}"
