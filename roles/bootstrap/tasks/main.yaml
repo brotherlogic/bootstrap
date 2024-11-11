@@ -10,6 +10,7 @@
     job: "/home/simon/cluster/bootstrap.sh"
 
 - name: Install kubectl packages
+  become: true
   ansible.builtin.apt:
     pkg:
     - apt-transport-https
