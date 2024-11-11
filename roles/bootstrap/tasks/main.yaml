@@ -27,5 +27,6 @@
     repo: "deb [signed-by={{ k8s_gpgpath }}] {{ k8s_repository }} /"
 
 - name: Install Kubernetes Packages
+  become: true
   package: name={{ item }} state=present force=yes install_recommends=no
   loop: "{{ k8s_packages }}"
