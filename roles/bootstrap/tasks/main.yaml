@@ -18,7 +18,7 @@
 
 - name: Download kubectl key
   shell: curl -fsSL {{ k8s_url_apt_key }} | gpg --dearmor -o {{ k8s_gpgpath }}
-    args:
+  args:
     creates: "{{ k8s_gpgpath }}"
 
 - name: Install Kubernetes repository
