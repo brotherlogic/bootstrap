@@ -17,9 +17,9 @@
     - gnupg
 
 - name: Download kubectl key
-   shell: curl -fsSL {{ k8s_url_apt_key }} | gpg --dearmor -o {{ k8s_gpgpath }}
-      args:
-        creates: "{{ k8s_gpgpath }}"
+  shell: curl -fsSL {{ k8s_url_apt_key }} | gpg --dearmor -o {{ k8s_gpgpath }}
+    args:
+    creates: "{{ k8s_gpgpath }}"
 
 - name: Install Kubernetes repository
   apt_repository:
@@ -27,5 +27,5 @@
     repo: "deb [signed-by={{ k8s_gpgpath }}] {{ k8s_repository }} /"
 
 - name: Install Kubernetes Packages
-      package: name={{ item }} state=present force=yes install_recommends=no
-      loop: "{{ k8s_packages }}"
+  package: name={{ item }} state=present force=yes install_recommends=no
+  loop: "{{ k8s_packages }}"
