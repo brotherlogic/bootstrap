@@ -1,5 +1,6 @@
 # Validate the sudoers file before saving
 - lineinfile:
+    become: true
     path: /etc/sudoers
     state: present
     regexp: '^%simon ALL='
