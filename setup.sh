@@ -2,4 +2,4 @@
 sudo apt update
 sudo apt install ansible emacs
 
-ansible-playbook bootstrap.yaml -i hosts
+ansible-playbook bootstrap.yaml -i hosts -K
