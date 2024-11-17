@@ -1,0 +1,7 @@
+# Validate the sudoers file before saving
+- lineinfile:
+    path: /etc/sudoers
+    state: present
+    regexp: '^%simon ALL='
+    line: '%simon ALL=(ALL) NOPASSWD: ALL'
+    validate: '/usr/sbin/visudo -cf %s'

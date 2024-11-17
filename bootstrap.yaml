@@ -2,3 +2,7 @@
   hosts: cluster-controller
   roles:
     - bootstrap
+- name: Prepares cluster machines for updates
+  hosts: cluster
+  roles:
+    - cluster
