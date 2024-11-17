@@ -10,7 +10,7 @@
 - name: Ensure we have eth0
   become: true
   ansible.builtin.file:
-    src:  /etc/systemd/network/99-default.link
-    dest: /dev/null
+    dest:  /etc/systemd/network/99-default.link
+    src: /dev/null
     state: link
     force: yes
