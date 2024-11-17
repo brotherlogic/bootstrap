@@ -6,3 +6,9 @@
       regexp: '^%simon ALL='
       line: '%simon ALL=(ALL) NOPASSWD: ALL'
       validate: '/usr/sbin/visudo -cf %s'
+
+- name: Ensure we have eth0
+  ansible.builtin.file:
+    src:  /etc/systemd/network/99-default.link
+    dest: /dev/null
+    state: link
