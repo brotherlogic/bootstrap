@@ -8,6 +8,16 @@
     repo: "https://github.com/brotherlogic/cluster2.git"
     dest: /home/simon/cluster
 
+- name: Use pip3 to install ansible
+  command:
+    cmd: virtualenv /home/simon/p3 -p python3.4
+    creates: "/home/simon/p3"
+
+- name: Install ansible
+  ansible.builtin.pip:
+    name: ansible
+    virtualenv: /home/simon/p3
+
 - name: Add a cron task to bootstrap the cluster every hour
   ansible.builtin.cron:
     name: CLUSTER_BOOTSTRAP
@@ -18,10 +28,10 @@
   become: true
   ansible.builtin.apt:
     pkg:
-    - apt-transport-https
-    - ca-certificates
-    - gnupg
-    - python3-pip
+      - apt-transport-https
+      - ca-certificates
+      - gnupg
+      - python3-pip
 
 - name: Use pip to install newer ansible-core
   ansible.builtin.pip:
