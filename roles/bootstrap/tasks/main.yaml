@@ -31,11 +31,6 @@
       - apt-transport-https
       - ca-certificates
       - gnupg
-      - python3-pip
-
-- name: Use pip to install newer ansible-core
-  ansible.builtin.pip:
-    name: ansible-core
 
 - name: Download kubectl key
   become: true
