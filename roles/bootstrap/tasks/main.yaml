@@ -8,6 +8,11 @@
     repo: "https://github.com/brotherlogic/cluster2.git"
     dest: /home/simon/cluster
 
+- name: Checkout the prod project
+  ansible.builtin.git:
+    repo: "https://github.com/brotherlogic/prod.git"
+    dest: /home/simon/prod
+
 - name: Use pip3 to install ansible
   command:
     cmd: virtualenv /home/simon/p3 -p python3.4
@@ -28,6 +33,12 @@
     name: CLUSTER_BOOTSTRAP
     minute: "*/5"
     job: "/home/simon/cluster/bootstrap.sh"
+
+- name: Add a cron task to bootstrap flux every hour
+  ansible.builtin.cron:
+    name: FLUX_BOOTSTRAP
+    minute: "*/5"
+    job: "/home/simon/prod/configure.sh"
 
 - name: Install kubectl packages
   become: true
