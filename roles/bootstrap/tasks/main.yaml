@@ -10,7 +10,7 @@
 
 - name: Checkout the prod project
   ansible.builtin.git:
-    repo: "https://github.com/brotherlogic/prod.git"
+    repo: "git@github.com:brotherlogic/prod.git"
     dest: /home/simon/prod
 
 - name: Use pip3 to install ansible
