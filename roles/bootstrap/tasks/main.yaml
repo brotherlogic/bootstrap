@@ -18,6 +18,11 @@
     name: ansible
     virtualenv: /home/simon/p3
 
+- name: Install netaddr
+  ansible.builtin.pip:
+    name: netaddr
+    virtualenv: /home/simon/p3
+
 - name: Add a cron task to bootstrap the cluster every hour
   ansible.builtin.cron:
     name: CLUSTER_BOOTSTRAP
